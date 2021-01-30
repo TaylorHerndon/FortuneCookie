@@ -8,7 +8,7 @@ Imports System.IO
 'RCET0265
 'Spring 2021
 'FortuneCookie
-'
+'https://github.com/TaylorHerndon/FortuneCookie
 
 Module FortuneCookie
 
@@ -22,10 +22,12 @@ Module FortuneCookie
         Dim ArrayIndex As Integer = 0
         Dim Proceed As Boolean = False
 
+        'Throw up some ASCII art of a fortune cookie because it's cool
         AsciiArt.Cookie()
         Thread.Sleep(4000)
         Console.Clear()
 
+        'Intro to the program
         Console.WriteLine("Hello friend!")
         Thread.Sleep(1000)
         Console.WriteLine("Here, take a cookie!")
@@ -45,6 +47,7 @@ Module FortuneCookie
         'Fortunes were taken from https://joshmadison.com/2008/04/20/fortune-cookie-fortunes/
         'Total fortunes: 358
 
+        'Take all of the fortines from the Fortunes.txt file and index them into an array for easy access
         Do Until Fortunes.Peek = -1
 
             FortunesArray(ArrayIndex) = Fortunes.ReadLine()
@@ -52,12 +55,14 @@ Module FortuneCookie
 
         Loop
 
+        'Get a random number and use it as the index for the fortune array.
         RandomNumber = Convert.ToInt32(VBMath.Rnd * 357 + 1)
         Console.WriteLine(FortunesArray(RandomNumber))
         Thread.Sleep(2500)
         Console.WriteLine("[Press any key to continue...]")
         Console.ReadKey()
 
+        'Allow the user to get a new fortune if they want
         Do Until Proceed = True
 
             Console.Clear()
@@ -68,6 +73,7 @@ Module FortuneCookie
 
                 Case ConsoleKey.Y
 
+                    'Same as earlier, get a random number and use it as the index for the fortune array
                     Console.Clear()
                     Console.WriteLine("Crunch!")
                     Thread.Sleep(1000)
