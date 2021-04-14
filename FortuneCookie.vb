@@ -16,11 +16,11 @@ Module FortuneCookie
 
         Randomize()
 
-        Dim RandomNumber As Integer = Nothing
-        Dim Fortunes As New StreamReader("Fortunes.txt")
-        Dim FortunesArray(358) As String
-        Dim ArrayIndex As Integer = 0
-        Dim Proceed As Boolean = False
+        Dim randomNumber As Integer = Nothing
+        Dim fortunes As New StreamReader("Fortunes.txt")
+        Dim fortunesArray(358) As String
+        Dim arrayIndex As Integer = 0
+        Dim proceed As Boolean = False
 
         'Throw up some ASCII art of a fortune cookie because it's cool
         AsciiArt.Cookie()
@@ -48,22 +48,22 @@ Module FortuneCookie
         'Total fortunes: 358
 
         'Take all of the fortines from the Fortunes.txt file and index them into an array for easy access
-        Do Until Fortunes.Peek = -1
+        Do Until fortunes.Peek = -1
 
-            FortunesArray(ArrayIndex) = Fortunes.ReadLine()
-            ArrayIndex = ArrayIndex + 1
+            fortunesArray(arrayIndex) = fortunes.ReadLine()
+            arrayIndex = arrayIndex + 1
 
         Loop
 
         'Get a random number and use it as the index for the fortune array.
-        RandomNumber = Convert.ToInt32(VBMath.Rnd * 357 + 1)
-        Console.WriteLine(FortunesArray(RandomNumber))
+        randomNumber = Convert.ToInt32(VBMath.Rnd * 357 + 1)
+        Console.WriteLine(fortunesArray(randomNumber))
         Thread.Sleep(2500)
         Console.WriteLine("[Press any key to continue...]")
         Console.ReadKey()
 
         'Allow the user to get a new fortune if they want
-        Do Until Proceed = True
+        Do Until proceed = True
 
             Console.Clear()
             Console.WriteLine("Do you want another cookie?")
@@ -77,20 +77,20 @@ Module FortuneCookie
                     Console.Clear()
                     Console.WriteLine("Crunch!")
                     Thread.Sleep(1000)
-                    RandomNumber = Convert.ToInt32(VBMath.Rnd * 357 + 1)
-                    Console.WriteLine(FortunesArray(RandomNumber))
+                    randomNumber = Convert.ToInt32(VBMath.Rnd * 357 + 1)
+                    Console.WriteLine(fortunesArray(randomNumber))
                     Thread.Sleep(2000)
                     Console.WriteLine(vbNewLine & "[Press any key to continue...]")
                     Console.ReadKey()
-                    Proceed = False
+                    proceed = False
 
                 Case ConsoleKey.N
 
-                    Proceed = True
+                    proceed = True
 
                 Case Else
 
-                    Proceed = False
+                    proceed = False
 
             End Select
 
